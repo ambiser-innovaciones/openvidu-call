@@ -1,8 +1,8 @@
 <div class="section1">
 	<mat-toolbar id="header">
 		<div *ngIf="isUserLogged" id="logout-content">
-			<span>Hi {{ username }}, do you want to logout?</span>
-			<button matTooltip="Logout" mat-icon-button id="logout-btn" (click)="logout()">
+			<span>SALIR</span>
+			<button matTooltip="Salir" mat-icon-button id="logout-btn" (click)="logout()">
 				<mat-icon>logout</mat-icon>
 			</button>
 		</div>
@@ -13,7 +13,7 @@
 		</a>
 		<h4 id="slogan-text">Sistema de videoconferencia privado de Ambiser Innovaciones</h4>
 	</div>
-<!--
+
 	<div class="form-container">
 		<div class="grid">
 			<form
@@ -26,7 +26,7 @@
 			>
 				<div class="form-field" id="login-username">
 					<label for="login-username" [ngClass]="{ error: loginError }">
-						<mat-icon matTooltip="Username">person</mat-icon>
+						<mat-icon matTooltip="Usuario">person</mat-icon>
 						<span class="hidden">Username</span>
 					</label>
 					<input
@@ -35,25 +35,25 @@
 						type="text"
 						name="username"
 						class="form-input"
-						placeholder="Username"
+						placeholder="Usuario"
 					/>
 				</div>
 
 				<div class="form-field" id="login-password">
 					<label for="login-password" [ngClass]="{ error: loginError }">
-						<mat-icon matTooltip="Password">lock</mat-icon>
+						<mat-icon matTooltip="Contraseña">lock</mat-icon>
 						<span class="hidden">Password</span>
 					</label>
-					<input formControlName="password" type="password" name="password" class="form-input" placeholder="Password" />
+					<input formControlName="password" type="password" name="password" class="form-input" placeholder="Contraseña" />
 				</div>
-				<div class="roomError" id="login-error" *ngIf="loginError">Authentication failed. Try again.</div>
+				<div class="roomError" id="login-error" *ngIf="loginError">Falló la autentificación.</div>
 
 				<div class="form-field">
-					<button mat-button id="join-btn" type="submit" [disabled]="loginForm.invalid || serverConnectionError">Login</button>
+					<button mat-button id="join-btn" type="submit" [disabled]="loginForm.invalid || serverConnectionError">ENVIAR</button>
 				</div>
 				<div class="roomError" id="serverConnectionError" *ngIf="serverConnectionError">
 					<mat-icon>error</mat-icon>
-					<span>Server connection failed!</span>
+					<span>Falló la conexión con el servidor</span>
 				</div>
 			</form>
 
@@ -67,7 +67,7 @@
 			>
 				<div class="form-field">
 					<label for="session-name-input" [ngClass]="{ error: sessionForm.get('sessionName').invalid }">
-						<mat-icon matTooltip="Session name">video_camera_front</mat-icon>
+						<mat-icon matTooltip="Sala">video_camera_front</mat-icon>
 						<span class="hidden">Session Name</span></label
 					>
 					<input
@@ -77,11 +77,11 @@
 						type="text"
 						name="sessionName"
 						class="form-input"
-						placeholder="Session Name"
+						placeholder="Sala"
 						(keydown)="keyDown($event)"
 					/>
 					<button
-						matTooltip="Generate new session name"
+						matTooltip="Generar nuevo nombre de sesión"
 						mat-icon-button
 						id="session-name-generator-btn"
 						(click)="generateSessionName($event)"
@@ -90,14 +90,14 @@
 					</button>
 				</div>
 				<div class="roomError" id="requiredNameError" *ngIf="sessionForm.get('sessionName').hasError('required')">
-					Session name is required
+					Nombre de sesión requerido
 				</div>
 				<div class="roomError" id="shortNameError" *ngIf="sessionForm.get('sessionName').hasError('minlength')">
-					Session name is too short!
+					El nombre de la sesión es demasiado corto
 				</div>
 
 				<div class="form-field">
-					<button mat-button id="join-btn" type="submit" [disabled]="sessionForm.invalid || serverConnectionError">JOIN</button>
+					<button mat-button id="join-btn" type="submit" [disabled]="sessionForm.invalid || serverConnectionError">ENTRAR</button>
 				</div>
 				<div class="roomError" id="serverConnectionError" *ngIf="serverConnectionError">
 					<mat-icon>error</mat-icon>
@@ -106,7 +106,7 @@
 			</form>
 		</div>
 	</div>
-
+<!--
 	<mat-toolbar class="footer">
 		<span>
 			Photo by
