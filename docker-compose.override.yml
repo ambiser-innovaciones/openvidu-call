@@ -3,17 +3,11 @@ version: '3.1'
 services:
     # --------------------------------------------------------------
     #
-    #   Change this if your want use your own application.
-    #   It's very important expose your application in port 5442
-    #   and use the http protocol.
-    #
-    #   Default Application
-    #
-    #   Openvidu-Call Version: 2.23.0
+    #   Openvidu-Call Version: 2.24.0
     #
     # --------------------------------------------------------------
     app:
-#        image: openvidu/openvidu-call:2.23.0
+#        image: openvidu/openvidu-call:2.24.0
         build:
             context: github 
             dockerfile: ./docker/Dockerfile.node
@@ -23,10 +17,14 @@ services:
             - SERVER_PORT=5442
             - OPENVIDU_URL=http://localhost:5443
             - OPENVIDU_SECRET=${OPENVIDU_SECRET}
-            - CALL_PRIVATE_ACCESS=DISABLED
             - CALL_OPENVIDU_CERTTYPE=${CERTIFICATE_TYPE}
-#        volumes:
-#            - ./mi-openvidu-call:/opt/openvidu-call
+            - CALL_PRIVATE_ACCESS=${CALL_PRIVATE_ACCESS:-}
+            - CALL_USER=${CALL_USER:-}
+            - CALL_SECRET=${CALL_SECRET:-}
+            - CALL_ADMIN_SECRET=${CALL_ADMIN_SECRET:-}
+            - CALL_RECORDING=${CALL_RECORDING:-}
+        env_file:
+            - .env
         logging:
             options:
                 max-size: "${DOCKER_LOGS_MAX_SIZE:-100M}"
